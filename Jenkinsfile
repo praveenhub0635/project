@@ -16,9 +16,13 @@ pipeline {
             steps {
                 echo 'wget'
 		echo 'Deploying..'
-		sh 'java -jar target/*.jar 10 20'
-
-            }
+		}
+	}
+	stage('SonarQube analysis') {
+    		def scannerHome = tool 'SonarScanner 4.0';
+   		withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+      		sh "${scannerHome}/bin/sonar-scanner"
+   			
 
 	}
     }
