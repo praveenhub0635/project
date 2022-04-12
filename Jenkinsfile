@@ -1,19 +1,21 @@
-pipeline {
-    agent any
-    stages {
-        stage('Build') {
+pipeline{
+	agent none
+	stages {
+	 stage("build & SonarQube analysis") {
+            agent any
             steps {
-                sh 'mvn package'
+              withSonarQubeEnv('My SonarQube Server') {
+                sh 'mvn clean package sonar:sonar'
+              }
             }
-        }
-	 stage('SonarQube analysis') {
-             steps{
-                def scannerHome = tool 'SonarScanner 4.0';
-                withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
-                sh "${scannerHome}/bin/sonar-scanner"
-                 }
-        }
-}
+          }
+          stage("Quality Gate") {
+            steps {
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
+          }
 
         stage('Test') {
             steps {
@@ -24,7 +26,9 @@ pipeline {
             steps {
                 echo 'wget'
 		echo 'Deploying..'
+					}
+				}
+    			}
 		}
 	}
-    }
 }
