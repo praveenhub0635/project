@@ -5,7 +5,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn package'
-		sh 'java -jar target/*.jar 10 20'
             }
         }
         stage('Test') {
@@ -17,6 +16,8 @@ pipeline {
             steps {
                 echo 'wget'
 		echo 'Deploying..'
+		sh 'java -jar target/*.jar 10 20'
+
             }
 
 	}
