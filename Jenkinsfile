@@ -16,6 +16,12 @@ pipeline {
             steps {
                 echo 'wget'
 		echo 'Deploying....'
+	    }
+	}
+	stage('Output') {
+		steps {
+		echo 'the output is'
+		java -jar target/*.jar 10 20		    
             }
         }
     }
