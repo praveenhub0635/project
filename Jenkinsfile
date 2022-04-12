@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-	PATH = "$PATH: /usr/share/maven"
-	}
     stages {
         stage('Build') {
             steps {
@@ -19,13 +16,6 @@ pipeline {
                 echo 'wget'
 		echo 'Deploying..'
 		}
-	}
-	stage('SonarQube analysis') {
-    		def scannerHome = tool 'SonarScanner 4.7';
-   		withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
-      		sh "${scannerHome}/bin/sonar-scanner"
- 		}  			
-
 	}
     }
 }
