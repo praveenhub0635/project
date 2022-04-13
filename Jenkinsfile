@@ -5,7 +5,7 @@
             agent any
             steps {
               withSonarQubeEnv('My SonarQube Server') {
-		echo 'testing the maven code'
+		echo 'testing by removig Home'
                 sh 'mvn clean package sonar:sonar'
               }
             }
