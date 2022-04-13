@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-		echo 'pipeline started'
-                echo 'Deploying....'
+		echo 'Jenkins pipeline started'
+                echo 'and Deploying....'
             }
         }
     }
