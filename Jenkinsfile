@@ -1,22 +1,20 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
+ pipeline {
+        agent none
+        stages {
+          stage("build & SonarQube analysis") {
+            agent any
             steps {
-                sh 'mvn package'
+              withSonarQubeEnv('My SonarQube Server') {
+                sh 'mvn clean package sonar:sonar'
+              }
             }
-        }
-        stage('Test') {
+          }
+          stage("Quality Gate") {
             steps {
-                sh 'mvn test'
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+              }
             }
+          }
         }
-        stage('Deploy') {
-            steps {
-		echo 'Jenkins pipeline started'
-                echo 'and Deploying....'
-            }
-        }
-    }
-}
+      }
