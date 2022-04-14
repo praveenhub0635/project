@@ -1,22 +1,21 @@
 pipeline {
     agent any
+
     stages {
-        stage('SCM') {
+        stage('Build') {
             steps {
-                git url: 'https://github.com/praveenhub0635/project.git'
+                echo 'Building..'
             }
         }
-	stage('Build'){
-		steps{
-		    sh 'mvn clean package'
-			}
-		}
-        stage('build && SonarQube analysis') {
+        stage('Test') {
             steps {
-                withSonarQubeEnv('sonarqube-6.7') {
-                        sh 'mvn clean package sonar:sonar'
-            
-                }
+                echo 'Testing..'
             }
         }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
