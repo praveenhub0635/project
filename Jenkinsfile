@@ -9,8 +9,18 @@ pipeline {
         stage('build && SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonarqube') {
+			 script {
+                    def sonarScanner = tool name: 'SonarQube Scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    sh "${sonarScanner}/bin/sonar-scanner " +
+                    "-Dsonar.projectKey=ProjectName-${GIT_BRANCH} " +
+                    "-Dsonar.projectName=ProjectName-${GIT_BRANCH} " +
+                    "-Dsonar.projectVersion=0.0.0 " +
+                    "-Dsonar.sources=**/src " +
+                    "-Dsonar.java.binaries=**/build " +
+                    "-Dsonar.exclusions=excluded_dirs/** " +
+                    "-Dsonar.sourceEncoding=UTF-8"
                     // Optionally use a Maven environment you've configured already
-                    withMaven(maven:'Maven 3.5') {
+                    withMaven(maven:'Maven 3.1') {
                         sh 'mvn clean package sonar:sonar'
                     }
                 }
