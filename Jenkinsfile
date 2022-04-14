@@ -4,9 +4,9 @@
           stage("build & SonarQube analysis") {
             agent any
             steps {
-              withSonarQubeEnv('My SonarQube Server') {
-		echo 'testing sonarqube'
-                sh 'mvn clean package sonar:sonar'
+              withSonarQubeEnv('sonarQube') {
+		echo 'testing sonarqube analysis'
+                sh "${scannerHome}/bin/sonar-scanner"
               }
             }
           }
