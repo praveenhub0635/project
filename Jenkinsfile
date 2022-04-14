@@ -1,24 +1,21 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Build'& SonarQube analysis) {
+        agent none
+        stages {
+          stage("build & SonarQube analysis") {
+            agent any
             steps {
-                echo 'Building..'
-		mvn sonar:sonar 
-		-Dsonar.host.url=http://44.202.166.182:9000 
-  		-Dsonar.login=babcf236ab38e89cdf8b8f3a56dd1c8bdac5de6a
+              withSonarQubeEnv('sonarqube') {
+                sh 'mvn clean package sonar:sonar'
+              }
             }
-        }
-        stage('Test') {
+          }
+          stage("Quality Gate") {
             steps {
-                echo 'Testing..'
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+              }
             }
+          }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
-}
+      }
+      
