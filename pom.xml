@@ -31,13 +31,7 @@
     <url>http://44.202.166.182:8081/nexus/content/repositories/releases</url>
   </repository>
 </distributionManagement>
-<!-- https://mvnrepository.com/artifact/org.sonarsource.sonarqube/sonar-testing-harness -->
-<dependency>
-    <groupId>org.sonarsource.sonarqube</groupId>
-    <artifactId>sonar-testing-harness</artifactId>
-    <version>6.7.7</version>
-    <scope>test</scope>
-</dependency>
+
 </distributionManagement>
   <repository>
     <id>releases</id>
