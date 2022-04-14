@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git url: 'https://github.com/praveenhub0635.git'
+                git url: 'https://github.com/praveenhub0635/project'
             }
         }
         stage('build && SonarQube analysis') {
@@ -12,7 +12,7 @@ pipeline {
 			 script {
                     def sonarScanner = tool name: 'SonarQube Scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     sh "${sonarScanner}/bin/sonar-scanner " +
-                    "-Dsonar.projectKey=ProjectName-${GIT_BRANCH} " +
+                    "-Dsonar.projectKey=ProjectName-${GIT_BRANCHi} " +
                     "-Dsonar.projectName=ProjectName-${GIT_BRANCH} " +
                     "-Dsonar.projectVersion=0.0.0 " +
                     "-Dsonar.sources=**/src " +
