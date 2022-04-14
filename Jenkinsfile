@@ -5,23 +5,20 @@
     			git 'https://github.com/foo/bar.git'
 					}
 				}
-        	stages {
-	          	stage("build & SonarQube analysis") {
-            	agent any
-            		steps {
+		
+		steps{
+                      script{
+                      withSonarQubeEnv('sonarqube') { 
+                      sh "mvn sonar:sonar"
+                       }
+                      timeout(time: 1, unit: 'HOURS') {
+                      def qg = waitForQualityGate()
+                      if (qg.status != 'OK') {
+                           error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                      }
+                    }
+		    sh "mvn clean install"
+                  }
+                }  
+              }
 
-              		withSonarQubeEnv('sonarqube') {
-			echo 'testing sonarqube analysis'
-                	sh "mvn sonar:sonar"
-              			}
-            		}
-          	}
-         	stage("Quality Gate") {
-            	steps {
-              		timeout(time: 1, unit: 'HOURS') {
-                	waitForQualityGate abortPipeline: true
-              				}
-           		 	}
-          		}
-        	}
-      }
