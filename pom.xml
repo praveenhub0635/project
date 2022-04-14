@@ -32,11 +32,4 @@
   </repository>
 </distributionManagement>
 
-</distributionManagement>
-  <repository>
-    <id>releases</id>
-    <url>http://44.202.166.182:9000/sonarqube/content/repositories/releases</url>
-  </repository>
-</distributionManagement>
-
 </project>
