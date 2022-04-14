@@ -5,7 +5,7 @@
             agent any
             steps {
               withSonarQubeEnv('My SonarQube Server') {
-		echo 'testing sonar'
+		echo 'testing sonarqube'
                 sh 'mvn clean package sonar:sonar'
               }
             }
