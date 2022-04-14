@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment{
-	PATH="$PATH=/usr/share/maven/Apache Maven 3.0.5/bin"
-	}
     stages {
         stage('SCM') {
             steps {
