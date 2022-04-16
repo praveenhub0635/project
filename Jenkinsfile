@@ -15,14 +15,17 @@ pipeline {
 		} 
 	  stage("Nexus Repository"){
 	    steps{
-	      nexusArtifactUploader credentialsId: '', 
-	      groupId: '', 
+	      nexusArtifactUploader 
+	      credentialsId: '', 
+	      groupId: 'pom.groupid', 
 	      nexusUrl: '54.164.25.52:8081', 
 	      nexusVersion: 'nexus3', 
 	      protocol: 'http', 
 	      repository: 'http://54.164.25.52:8081/nexus/content/repositories/releases', 
 	      version: '2.14.18-01'
-		sh 'mvn deploy' 	
+		sh 'mvn deploy' 
+			}
+		}	
 	}
 }
 
