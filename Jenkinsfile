@@ -30,7 +30,7 @@ pipeline {
 	      				protocol: 'http', 
 	      				repository: 'http://52.207.239.26:8081/nexus/content/repositories/releases', 
 	      				version: '2.14.18-01'
-							sh 'mvn deploy' 
+						
 			}
 		}	
 	}
