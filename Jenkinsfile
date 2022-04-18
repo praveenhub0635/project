@@ -13,7 +13,7 @@ pipeline {
        	    		waitForQualityGate abortPipeline: true
     					}
 				} 
-	  		stage("Nexus Repository")
+	  		stage("Nexus Repository"){
 	    		steps{
 	      			nexusArtifactUploader artifacts: [
 						[
@@ -25,14 +25,15 @@ pipeline {
 				], 
 	      				credentialsId: 'nexus3', 
 	      				groupId: 'com.web.cal', 
-	      				nexusUrl: '54.164.25.52:8081', 
+	      				nexusUrl: '52.207.239.26:8081', 
 	     				nexusVersion: 'nexus3', 
 	      				protocol: 'http', 
-	      				repository: 'http://54.164.25.52:8081/nexus/content/repositories/releases', 
+	      				repository: 'http://52.207.239.26:8081/nexus/content/repositories/releases', 
 	      				version: '2.14.18-01'
 							sh 'mvn deploy' 
-				}
-			}	
-		}
-
+			}
+		}	
+	}
+	
+}
 
