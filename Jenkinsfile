@@ -11,8 +11,13 @@ pipeline {
         	stage("Quality Gate") {
  	    		steps{
        	    		waitForQualityGate abortPipeline: true
-    					}
-				} 
+    				}
+				}
+			stage("Build Artifact"){
+				steps{
+					sh 'mvn deploy'
+				}
+			} 
 	  		stage("Nexus Repository"){
 	    		steps{
 	      			nexusArtifactUploader artifacts: [
@@ -33,7 +38,7 @@ pipeline {
 						
 			}
 		}
-				
+			
 	}
 	
 }
