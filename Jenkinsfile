@@ -4,11 +4,16 @@ pipeline {
         	stage("build & SonarQube analysis") {
             	steps {
               		withSonarQubeEnv('Sonarqube') {
-                	sh 'mvn clean package sonar:sonar'
+                	sh 'mvn sonar:sonar'
               						}
             				}			
           		}
 			stage("Build Artifact"){
+				steps{
+					sh 'mvn clean package'
+				}
+			}
+			stage('publish Artifact to Nexus'){
 				steps{
 					sh 'mvn deploy'
 				}
