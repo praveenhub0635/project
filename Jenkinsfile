@@ -8,11 +8,6 @@ pipeline {
               						}
             				}			
           		}
-        	stage("Quality Gate") {
- 	    		steps{
-       	    		waitForQualityGate abortPipeline: true
-    				}
-				}
 			stage("Build Artifact"){
 				steps{
 					sh 'mvn deploy'
