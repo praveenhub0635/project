@@ -25,10 +25,10 @@ pipeline {
 				], 
 	      				credentialsId: 'nexus3', 
 	      				groupId: 'com.web.cal', 
-	      				nexusUrl: '54.166.85.41:8081', 
+	      				nexusUrl: 'http://18.207.221.95:8081', 
 	     				nexusVersion: 'nexus3', 
 	      				protocol: 'http', 
-	      				repository: 'http://54.166.85.41:8081/nexus/content/repositories/releases', 
+	      				repository: 'http://18.207.221.95:8081/nexus/content/repositories/releases', 
 	      				version: '2.14.18-01'
 						
 			}
