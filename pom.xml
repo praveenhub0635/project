@@ -28,7 +28,7 @@
 <distributionManagement>
   <repository>
     <id>releases</id>
-    <url>http://54.163.107.237:8081/nexus/content/repositories/releases-WebAppCal</url>
+    <url>http://54.163.107.237:8081/nexus/content/repositories/WebAppCal-releases</url>
   </repository>
 </distributionManagement>
 
