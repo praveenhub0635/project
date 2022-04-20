@@ -30,7 +30,7 @@ pipeline {
 				], 
 	      				credentialsId: 'nexus3', 
 	      				groupId: 'com.web.cal', 
-	      				nexusUrl: 'http://18.207.221.95:8081', 
+	      				nexusUrl: 'http://54.163.107.237:8081/nexus', 
 	     				nexusVersion: 'nexus3', 
 	      				protocol: 'http', 
 	      				repository: 'WebAppCal-releases', 
