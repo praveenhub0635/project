@@ -28,10 +28,10 @@ pipeline {
 					  	type: 'war'
 				  	]
 				], 
-	      				credentialsId: 'nexus3', 
+	      				credentialsId: 'nexus2', 
 	      				groupId: 'com.web.cal', 
 	      				nexusUrl: 'http://54.163.107.237:8081/nexus', 
-	     				nexusVersion: 'nexus3', 
+	     				nexusVersion: 'nexus2', 
 	      				protocol: 'http', 
 	      				repository: 'WebAppCal-releases', 
 	      				version: '2.14.18-01'
