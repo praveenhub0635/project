@@ -22,7 +22,7 @@ pipeline {
 	    		steps{
 	      			nexusArtifactUploader artifacts: [
 						[
-					  	artifactId:'WebAppCal',
+					  	artifactId:'maven-compiler-plugin',
 					  	classifier:'',
 					  	file: 'target',
 					  	type: 'war'
