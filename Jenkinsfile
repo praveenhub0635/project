@@ -24,7 +24,7 @@ pipeline {
 						[
 					  	artifactId:'WebAppCal',
 					  	classifier:'',
-					  	file: 'target/WebAppCal-1.3.5.jar',
+					  	file: 'target/WebAppCal-1.3.5.war',
 					  	type: 'war'
 				  	]
 				], 
@@ -33,7 +33,7 @@ pipeline {
 	      				nexusUrl: 'http://3.87.23.126:8081/nexus', 
 	     				nexusVersion: 'nexus2', 
 	      				protocol: 'http', 
-	      				repository: 'releases-WebAppCal', 
+	      				repository: 'releases', 
 	      				version: '2.14.18-01'
 						
 			}
