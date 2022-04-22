@@ -33,7 +33,7 @@ pipeline {
 	      				nexusUrl: 'http://3.87.23.126:8081/nexus', 
 	     				nexusVersion: 'nexus2', 
 	      				protocol: 'http', 
-	      				repository: 'WebAppCal-releases', 
+	      				repository: 'releases-WebAppCal', 
 	      				version: '2.14.18-01'
 						
 			}
