@@ -24,7 +24,7 @@ pipeline {
 						[
 					  	artifactId:'WebAppCal',
 					  	classifier:'',
-					  	file: 'target/WebAppCal-1.3.5.war',
+					  	file: 'target',
 					  	type: 'war'
 				  	]
 				], 
