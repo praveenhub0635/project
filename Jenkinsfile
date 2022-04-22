@@ -20,21 +20,9 @@ pipeline {
 			} 
 	  		stage("Nexus Repository"){
 	    		steps{
-	      			nexusArtifactUploader artifacts: [
-						[
-					  	artifactId:'WebAppCal',
-					  	classifier:'',
-					  	file: 'target',
-					  	type: 'war'
-				  	]
-				], 
-	      				credentialsId: 'nexus2', 
-	      				groupId: 'com.web.cal', 
-	      				nexusUrl: 'http://3.87.23.126:8081/nexus', 
-	     				nexusVersion: 'nexus2', 
-	      				protocol: 'http', 
-	      				repository: 'releases', 
-	      				version: '2.14.18-01'
+	      			script{
+						  deploy adapters:[tomcat7(credentialsId:'centos',path:'',url:'http://54.196.182.98:8080/')],contextPath:'/pipeline',onFailure:false,war:'**/*.war'
+					  }
 						
 			}
 		}
