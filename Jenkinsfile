@@ -15,7 +15,7 @@ pipeline {
 			}
 			stage('publish Artifact to Nexus'){
 				steps{
-					sh 'mvn deploy'
+					sh 'mvn clean deploy'
 				}
 			} 
 	  		stage("Nexus Repository"){
