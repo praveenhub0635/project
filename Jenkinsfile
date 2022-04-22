@@ -25,7 +25,7 @@ pipeline {
 					  	artifactId:'WebAppCal',
 					  	classifier:'',
 					  	file: 'target/WebAppCal-1.3.5.jar',
-					  	type: 'jar'
+					  	type: 'war'
 				  	]
 				], 
 	      				credentialsId: 'nexus2', 
