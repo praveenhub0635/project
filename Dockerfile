@@ -1,10 +1,21 @@
-pipeline{
-   agent {
-    dockerfile {
-        filename 'Dockerfile.build'
-        dir 'build'
-        label 'my-defined-label'
-        additionalBuildArgs  '--build-arg version=1.0.2'
-        args '-v /tmp:/tmp'
+pipeline {
+    agent none
+    stages {
+        stage('Back-end') {
+            agent {
+                docker { image 'maven:3.8.1-adoptopenjdk-8' }
+            }
+            steps {
+                sh 'mvn --version'
+            }
+        }
+        stage('sonarqube') {
+            agent {
+                docker { image 'node:16.13.1-alpine' }
+            }
+            steps {
+                sh 'node --version'
+            }
+        }
     }
 }
