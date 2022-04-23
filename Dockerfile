@@ -1,11 +1,10 @@
 pipeline{
-    agent any
-    stages{
-        stage("pull Docker image"){
-            step{
-                echo "create docker image of hello world"
-                sh 'docker pull hello-world'
-            }
-        }
+   agent {
+    dockerfile {
+        filename 'Dockerfile.build'
+        dir 'build'
+        label 'my-defined-label'
+        additionalBuildArgs  '--build-arg version=1.0.2'
+        args '-v /tmp:/tmp'
     }
 }
