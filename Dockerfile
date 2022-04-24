@@ -1,1 +1,5 @@
-creating a dockerfile to build using jenkins pipeline.
+FROM sonarqube:8.9-community
+
+COPY sonar-custom-plugin-1.0.jar /opt/sonarqube/extensions/
+
+
