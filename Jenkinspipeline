@@ -2,8 +2,8 @@ pipeline {
     agent any
     stages {
         stage('docker build') {
-            agent {
-                sh 'docker build -t praveen0635/ang-cal .
+            steps {
+                sh 'docker build -t praveen0635/ang-cal .'
             }
         }    
     }
