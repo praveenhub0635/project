@@ -1,10 +1,15 @@
 pipeline {
     agent any
     stages {
+        stage('docker service'){
+            steps {
+                sh 'service docker start'
+            }
+        }
         stage('docker build') {
             steps {
                 sh 'docker build -t praveen0635/ang-cal .'
             }
-        }    
+        }
     }
 }
