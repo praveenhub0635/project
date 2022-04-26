@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('docker build') {
             agent {
-                sh 'docker build -t preaveen0635/ang-cal .
+                sh 'docker build -t praveen0635/ang-cal .
             }
         }    
     }
