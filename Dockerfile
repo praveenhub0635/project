@@ -1,6 +1,11 @@
-FROM sonarqube:8.9-community
+FROM node:14-alpine AS  build-step
+RUN npm install -g @ngular/cli
+COPY .
+RUN npm install
+RUN ng build
+FROM httpd
+COPY --from=build-step dist/angularCalc /usr/local/apache2/htdocs/ 
 
-COPY sonar-custom-plugin-1.0.jar /opt/sonarqube/extensions/
 
-RUN docker image ls
+
 
