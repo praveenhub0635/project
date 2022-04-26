@@ -1,0 +1,10 @@
+pipeline {
+    agent node
+    stages {
+        stage('docker build') {
+            agent {
+                sh 'docker build -t preaveen0635/ang-cal .
+            }
+        }    
+    }
+}
