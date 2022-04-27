@@ -1,3 +1,3 @@
-FROM node:16.13.1-alpine
+FROM httpd
 
-RUN apk add -U subversion
+COPY . /usr/local/apache2/htdocs/
