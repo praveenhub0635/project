@@ -1,8 +1,5 @@
 pipeline {
-    agent any
-    agent {
-        Dockerfile: true
-    }
+    agent Dockerfile: true
     stages {
         stage('docker service'){
             steps {
