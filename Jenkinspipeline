@@ -1,6 +1,13 @@
 pipeline {
     agent { dockerfile true }
     stages {
+        stage('daemon') {
+            steps {
+                sh 'usermod -aG docker jenkins'
+                sh 'usermod -aG root jenkins'
+                sh 'chmod 777 /var/run/docker.sock'
+            }
+        }
         stage('Test') {
             steps {
                 sh 'node --version'
