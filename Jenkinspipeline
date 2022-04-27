@@ -3,8 +3,7 @@ pipeline {
     stages{
          step('Building Docker image'){
              echo "buid image from docker hub"
-             sh 'docker build -t praveen0635/ecomm'
-
+             sh 'docker build -t praveen0635/ecomm .'
         }
     }
 }
