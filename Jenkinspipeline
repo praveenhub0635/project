@@ -1,6 +1,7 @@
 pipeline {
-    agent {Dockerfile true}
+    agent any
     stages{
+        agent {Dockerfile true}
         stage('Building Docker image'){
          step{
              echo "buid image from docker hub"
