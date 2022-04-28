@@ -5,11 +5,17 @@ pipeline {
             agent{
                 Dockerfile true
             }
-         step{
+            steps{
              echo "buid image from docker hub"
-             sh 'build -t praveen0635/ecomm'
+             sh 'docker build -t praveen0635/ecomm'
 
            }
         }
+        stage('Test image'){
+            steps{
+            sh 'docker run -dt --name ecomm -p 80:80  praveen0635/ecomm'
+            }
+        }
+
     }
 }
