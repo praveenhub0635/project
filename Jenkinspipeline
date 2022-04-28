@@ -1,7 +1,10 @@
 pipeline {
-    agent {Dockerfile true}
+    agent any
     stages{
         stage('Building Docker image'){
+            agent{
+                Dockerfile true
+            }
          step{
              echo "buid image from docker hub"
              sh 'build -t praveen0635/ecomm'
