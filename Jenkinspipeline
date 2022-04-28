@@ -1,9 +1,13 @@
 pipeline {
     agent { Dockerfile true }
     stages{
+        stage{
          step('Building Docker image'){
              echo "buid image from docker hub"
-             sh 'docker build -t praveen0635/ecomm .'
+             sh 'build -t praveen0635'
+             sh 'login'
+             sh 'push praveen0635/ecomm'
+           }
         }
     }
 }
