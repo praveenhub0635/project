@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('configuring docker'){
-            steps{
-                sh 'curl -fsSL get.docker.com -o get-docker.sh'
-            }
-        }
         stage('Build Docker image') {
             steps {
                 sh 'docker build -t praveen0635/ecomm .'
