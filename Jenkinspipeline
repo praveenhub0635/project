@@ -1,9 +1,5 @@
 pipeline {
-    agent node{
-        stage('SCM Checkout'){
-            git 'https://github.com/praveenhub0635/project.git'
-        }
-    }
+    agent any
     stages {
         stage('configuring docker'){
             steps{
