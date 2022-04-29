@@ -8,6 +8,7 @@ pipeline {
         }
         stage('Build Docker image') {
             steps {
+                echo "Praveen@4935"
                 sh 'docker login -u praveen0635 --password-stdin'
                 sh 'docker build -t praveen0635/ecomm .'
             }
