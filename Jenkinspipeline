@@ -8,6 +8,7 @@ pipeline {
         }
         stage('pull docker image'){
             steps{
+                sh 'get-docker.sh'
                 sh 'usermod -aG docker jenkins'
                 sh 'chown root:docker /var/run/docker.sock'
                 sh 'docker pull hello-world'
