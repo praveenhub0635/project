@@ -4,7 +4,7 @@ pipeline {
         stage('configuring docker'){
             steps{
                 sh 'curl -fsSL get.docker.com -o get-docker.sh'
-                sh 'sudo usermod -aG docker centos'
+                sh 'usermod -aG docker centos'
             }
         }
         stage('pull docker image'){
