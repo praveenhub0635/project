@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh 'docker build -t praveen0635/ecomm'
                 sh 'docker login'
-                sg 'push praveen0635/ecomm'
+                sh 'push praveen0635/ecomm'
             }
         }
         stage('Test Docker image'){
