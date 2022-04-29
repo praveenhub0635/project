@@ -8,6 +8,11 @@ pipeline {
                 sh 'push praveen0635/ecomm'
             }
         }
+        stage('list docker images'){
+            steps{
+                sh 'docker image ls'
+            }
+        }
         stage('Test Docker image'){
             steps{
                 sh 'docker run -dt --name ecomm -p 80:80 praveen0635/ecomm'
