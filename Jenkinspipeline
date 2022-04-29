@@ -8,8 +8,8 @@ pipeline {
         }
         stage('pull docker image'){
             steps{
-                sh 'sudo usermod -aG docker jenkins'
-                sh 'sudo chmod 777 /var/run/docker.sock'
+                sh 'usermod -aG docker jenkins'
+                sh 'chown root:docker /var/run/docker.sock'
                 sh 'docker pull hello-world'
             }
         }
