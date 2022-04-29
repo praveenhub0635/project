@@ -1,10 +1,16 @@
 pipeline {
-    agent { dockerfile true }
+    agent { Dockerfile true }
     stages {
-        stage('Test') {
+        stage('Build Docker image') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+                sh 'docker build -t praveen0635/ecomm'
+                sh 'docker login'
+                sg 'push praveen0635/ecomm'
+            }
+        }
+        stage('Test Docker image'){
+            steps{
+                sh 'docker run -dt --name ecomm -p 80:80 praveen0635/ecomm'
             }
         }
     }
