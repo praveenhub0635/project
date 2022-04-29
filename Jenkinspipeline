@@ -1,21 +1,19 @@
 pipeline {
     agent any
     stages {
+        stage('pull docker image'){
+            steps{
+                sh 'docker pull httpd'
+            }
+        }
         stage('Build Docker image') {
             steps {
-                sh 'docker build -t praveen0635/apache .'
-                sh 'docker login'
-                sh 'push praveen0635/ecomm'
+                sh 'docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4'
             }
         }
         stage('list docker images'){
             steps{
                 sh 'docker image ls'
-            }
-        }
-        stage('Test Docker image'){
-            steps{
-                sh 'docker run -dt --name ecomm -p 80:80 praveen0635/ecomm'
             }
         }
     }
