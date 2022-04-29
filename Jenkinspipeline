@@ -6,16 +6,9 @@ pipeline {
                 sh 'curl -fsSL get.docker.com -o get-docker.sh'
             }
         }
-        stage('pull docker image'){
-            steps{
-                sh 'usermod -aG docker jenkins'
-                sh 'chown root:docker /var/run/docker.sock'
-                sh 'docker pull hello-world'
-            }
-        }
         stage('Build Docker image') {
             steps {
-                sh 'docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4'
+                sh 'docker build -t praveen0635/ecomm .'
             }
         }
         stage('list docker images'){
