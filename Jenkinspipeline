@@ -3,12 +3,13 @@ pipeline {
     stages {
         stage('configuring docker'){
             steps{
-                sh 'curl -fsSL get.docker.com -o get-docker.sh'
-                
+                sh 'curl -fsSL get.docker.com -o get-docker.sh'   
             }
         }
         stage('pull docker image'){
             steps{
+                sh 'useradd -a -G docker jenkins'
+                sh 'chmod 777 /var/run/docker.sock'
                 sh 'docker pull hello-world'
             }
         }
