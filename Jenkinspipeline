@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build Docker image') {
             steps {
-                sh 'docker build -t praveen0635/ecomm .'
+                sh 'docker build -t praveen0635/apache .'
                 sh 'docker login'
                 sh 'push praveen0635/ecomm'
             }
