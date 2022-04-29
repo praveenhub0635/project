@@ -1,9 +1,14 @@
 pipeline {
     agent any
     stages {
+        stage('configuring docker'){
+            steps{
+                sh 'curl -fsSL get.docker.com -o get-docker.sh'
+                sh 'sh get-docker.sh'
+            }
+        }
         stage('pull docker image'){
             steps{
-                sh 'sh get-docker.sh'
                 sh 'docker pull httpd'
             }
         }
