@@ -4,7 +4,7 @@ pipeline {
         stage('configuring docker'){
             steps{
                 sh 'curl -fsSL get.docker.com -o get-docker.sh'
-                sh 'systemctl start docker'
+                sh 'sudo systemctl start docker'
             }
         }
         stage('pull docker image'){
