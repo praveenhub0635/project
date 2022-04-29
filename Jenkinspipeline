@@ -8,7 +8,7 @@ pipeline {
         }
         stage('pull docker image'){
             steps{
-                sh 'useradd -a -G docker jenkins'
+                sh 'useradd -aG docker jenkins'
                 sh 'chmod 777 /var/run/docker.sock'
                 sh 'docker pull hello-world'
             }
