@@ -18,10 +18,10 @@ pipeline {
 					sh 'mvn clean deploy'
 				}
 			} 
-	  		stage("Nexus Repository"){
+	  		stage("Deploying war on Tomcat"){
 	    		steps{
 	      			script{
-						  deploy adapters:[tomcat7(credentialsId:'centos',path:'',url:'http://54.196.182.98:8080/')],contextPath:'/pipeline',onFailure:false,war:'**/*.war'
+						  deploy adapters:[tomcat7(credentialsId:'centos',path:'',url:'http://54.196.182.98:8080/')],contextPath:'/pipelineCI',onFailure:false,war:'**/*.war'
 					  }
 						
 			}
