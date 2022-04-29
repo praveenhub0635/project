@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('pull docker image'){
             steps{
+                sh 'get-docker.sh'
                 sh 'docker pull httpd'
             }
         }
