@@ -9,7 +9,7 @@ pipeline {
         }
         stage('pull docker image'){
             steps{
-                sh 'docker pull httpd'
+                sh 'docker pull hello-world'
             }
         }
         stage('Build Docker image') {
