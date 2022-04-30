@@ -1,7 +1,11 @@
 pipeline {
-    agent any
+    agent {dockerfile true}
     stages {
-        agent {dockerfile true}
+        stage('Checkout SCM'){
+            steps{
+                git 'https://github.com/praveenhub0635/project.git'
+            }
+        }
         stage('docker install'){
             steps{
                 sh 'curl -fsSL get.docker.com -o get-docker.sh'
