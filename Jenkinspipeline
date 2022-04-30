@@ -4,6 +4,7 @@ pipeline {
         stage('docker install'){
             steps{
                 sh 'curl -fsSL get.docker.com -o get-docker.sh'
+                sh 'get-docker.sh'
             }
         }
         stage('Build Docker image') {
