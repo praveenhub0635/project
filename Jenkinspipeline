@@ -1,15 +1,15 @@
 pipeline {
     agent any
     stages {
+        agent {dockerfile true}
         stage('docker install'){
             steps{
                 sh 'curl -fsSL get.docker.com -o get-docker.sh'
-              
             }
         }
         stage('Build Docker image') {
             steps {
-                sh 'docker pull hello-world'
+                sh 'docker build -t praveen0635/ecomm'
             }
         }
     }
